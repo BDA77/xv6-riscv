@@ -89,24 +89,23 @@ No pude solucionar nunca ese error, probé muchísimos comandos que ya no recuer
      ```
 3. **Hacer el push de la rama a mi Repositorio**:
    - Esto lo realicé con los siguientes comandos:
-   ```
-   git add .
-   git commit -m "Se crea la rama"
-   git push origin boreas_duchens_t0
-   ```
+      ```
+      git add .
+      git commit -m "Se crea la rama"
+      git push origin boreas_duchens_t0
+      ```
 
-   Este paso me pidió el usuario y la contraseñode GitHub y, al entregarlas en la terminal, me salía que no era posible iniciar sesión con contraseña así que tuve que hacer uso de una clave SSH. Todo esto lo hice con los siguientes comandos:
+   - Este paso me pidió ingresar mi usuario y contraseña de GitHub y, al entregarlas en la terminal, me salía que no era posible iniciar sesión con contraseña. Tras esto tuve que hacer uso de una clave SSH. Todo esto lo hice con los siguientes comandos:
 
-   ```
-   ssh-keygen -t ed25519 -C boreas2801@gmail.com
-   cat ~/.ssh/id_ed25519.pub
-   eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_ed25519
-   ssh -T git@github.com
-   git remote set-url origin git@github.com:BDA77/xv6-riscv.git
-   git push origin boreas_duchens_t0
-   ```
-
+      ```
+      ssh-keygen -t ed25519 -C boreas2801@gmail.com
+      cat ~/.ssh/id_ed25519.pub
+      eval "$(ssh-agent -s)"
+      ssh-add ~/.ssh/id_ed25519
+      ssh -T git@github.com
+      git remote set-url origin git@github.com:BDA77/xv6-riscv.git
+      git push origin boreas_duchens_t0
+      ```
 
 ### Instalación de Dependencias
 
