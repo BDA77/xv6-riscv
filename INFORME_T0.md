@@ -109,7 +109,7 @@ No pude solucionar nunca ese error, probé muchísimos comandos que ya no recuer
 
 ### Instalación de Dependencias
 
-Para instalar `xv6` y sus dependencias, seguí los siguientes pasos:
+Para instalar xv6 y sus dependencias, seguí los siguientes pasos:
 
 1. **Actualizar los Repositorios**:
    ```
@@ -155,4 +155,4 @@ Para instalar `xv6` y sus dependencias, seguí los siguientes pasos:
    init: starting sh
    ```
 
-En la entrega de Webc se adjuntará la imagen que comprueba el funcionamiento de xv6. El nombre de este archivo será `xv6-captura.png`.
+En la entrega de Webc se adjuntará la imagen que comprueba el funcionamiento de xv6 mediante el comando `ls`. El nombre de este archivo será `xv6-captura.png`.
