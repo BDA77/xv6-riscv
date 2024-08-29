@@ -118,28 +118,27 @@ Para instalar xv6 y sus dependencias, seguí los siguientes pasos:
 
 2. **Instalar Compiladores y Herramientas**:
    ```
-
    sudo apt-get install gcc-riscv64-linux-gnu
    sudo apt-get install g++-riscv64-linux-gnu
    ```
 
 3. **Instalar QEMU**:
+
    Utilicé el siguiente comando para instalar QEMU:
    ```
    sudo apt-get install qemu qemu-system-misc
    ```
+   
+   Después, intenté ejecutar `make qemu` y tuve que ejecutar el siguiente comando, pues `make` no estaba instalado:
+   ```
+   sudo apt-get install make
+   ```
 
-
-   Luego instalé mas dependencias que me pidió el sistema:
+   Luego, instalé mas dependencias que me pidió el sistema al tratar de ejecutar `make qemu`:
    ```
    sudo add-apt-repository universe
    sudo add-apt-repository multiverse
    sudo apt-get install gcc
-   ```
-
-   Luego intenté ejecutar `make qemu` y tuve que ejecutar el siguiente comando, pues `make` no estaba instalado:
-   ```
-   sudo apt-get install make
    ```
 
 ### Compilación y Ejecución de xv6
