@@ -314,3 +314,11 @@ Para este punto se realizarán los mismos pasos que en la implementación de `in
     - Finalmente se realizará el push final con todo el informe terminado.
 
 
+## Conclusiones Finales
+
+En conclusión, todo el proceso de implementación fue de mucho análisis y de mucha concentración. Esto en el sentido de que se debían manipular muchos archivos distintos y tener plena conciencia de lo que se había hecho en cada uno de ellos, pues si había algún error se debía encontrar la forma específica de arreglarlo dentro del archivo específico del error.
+
+Además, fue muy útil la capacidad de analizar los patrones de las otras funciones o llamadas al sistema que habían dentro de los archivos que debía editar, ya que siguiendo la estructura de estas era mucho más probable que la compilación funcionara correctamente.
+
+Por último, una gran idea fue ir haciendo este informe al mismo tiempo que la tarea, pues si tenía algún error era mucho más sencillo identificar todo lo que había hecho para luego encontrar el problema.
+
