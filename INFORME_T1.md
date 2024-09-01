@@ -298,12 +298,19 @@ Para este punto se realizarán los mismos pasos que en la implementación de `in
 
 ### Push de la carpeta `xv6-riscv` a la rama de la Tarea 1
 
-Finalmente se realizó el push a la nueva rama de mi repositorio. Se usaron los siguientes comandos en el siguiente orden:
+1. **Primer push**:
 
-```
+    - Se realizó el push a la nueva rama de mi repositorio. Se usaron los siguientes comandos en el siguiente orden:
+        ```
+        git branch
+        git status
+        git add .
+        git commit -m "Implementación de getppid y getancestor"
+        git push origin boreas_duchens_t1
+        ```
 
+2. **Push final**:
 
-```
-
+    - Finalmente se realizará el push final con todo el informe terminado.
 
 

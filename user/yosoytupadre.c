@@ -14,4 +14,4 @@ int main(void) {
         printf("No se encontró un ancestro en el nivel %d.\n", n);
 
     exit(0);
-}  
+}
