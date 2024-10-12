@@ -124,6 +124,8 @@ allocproc(void)
 found:
   p->pid = allocpid();
   p->state = USED;
+  p->priority = 0;
+  p->boost = 1;
 
   // Allocate a trapframe page.
   if((p->trapframe = (struct trapframe *)kalloc()) == 0){
@@ -458,6 +460,19 @@ scheduler(void)
     for(p = proc; p < &proc[NPROC]; p++) {
       acquire(&p->lock);
       if(p->state == RUNNABLE) {
+        // Modificación: Ajustar la prioridad según boost
+        p->priority += p->boost;
+
+        // Si la prioridad alcanza 9, cambiar boost a -1
+        if(p->priority >= 9) {
+          p->boost = -1;
+        }
+
+        // Si la prioridad alcanza 0, cambiar boost a 1
+        if(p->priority <= 0) {
+          p->boost = 1;
+        }
+
         // Switch to chosen process.  It is the process's job
         // to release its lock and then reacquire it
         // before jumping back to us.
