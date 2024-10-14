@@ -8,13 +8,13 @@ fork_processes(int n)
     int pid = fork();
     if(pid == 0) {
       sleep(i * 10);
-      printf("Ejecutando proceso hijo con pid %d\n", getpid());
+      printf("Ejecutando proceso con pid %d\n", getpid());
       sleep(10);
       exit(0);
     }
   }
 
-  // Se espera que todos los hijos terminen
+  // Se espera que todos los procesos hijos terminen
   for(int i = 0; i < n; i++) {
     wait(0);
   }
