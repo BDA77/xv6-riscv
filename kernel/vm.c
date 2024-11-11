@@ -5,6 +5,7 @@
 #include "riscv.h"
 #include "defs.h"
 #include "fs.h"
+#include "proc.h"
 
 /*
  * the kernel's page table.
@@ -448,4 +449,50 @@ copyinstr(pagetable_t pagetable, char *dst, uint64 srcva, uint64 max)
   } else {
     return -1;
   }
+}
+
+// Establece un rango de memoria como de solo lectura para evitar modificaciones en esa sección de memoria.
+int
+mprotect(void *addr, int len)
+{
+  struct proc *p = myproc();
+  uint64 start = PGROUNDDOWN((uint64)addr);  // Redondear la dirección de inicio hacia abajo
+  uint64 end = start + len;
+
+  // Verificación de entrada: comprobar longitud y rangos de dirección
+  if (len <= 0 || start >= p->sz || end > p->sz) {
+    return -1;
+  }
+
+  for (uint64 a = start; a < end; a += PGSIZE) {
+    pte_t *pte = walk(p->pagetable, a, 0); // Localizar la entrada de la tabla de páginas
+    if (pte == 0) {
+      return -1;
+    }
+    *pte &= ~PTE_W; // Desactiva el permiso de escritura en la página
+  }
+  return 0;
+}
+
+// Restaura los permisos de escritura en un rango de memoria, permitiendo lecturas y escrituras en ese espacio.
+int
+munprotect(void *addr, int len)
+{
+  struct proc *p = myproc();
+  uint64 start = PGROUNDDOWN((uint64)addr);  // Redondear la dirección de inicio hacia abajo
+  uint64 end = start + len;
+
+  // Verificación de entrada: comprobar longitud y rangos de dirección
+  if (len <= 0 || start >= p->sz || end > p->sz) {
+    return -1;
+  }
+
+  for (uint64 a = start; a < end; a += PGSIZE) {
+    pte_t *pte = walk(p->pagetable, a, 0); // Localizar la entrada de la tabla de páginas
+    if (pte == 0) {
+      return -1;
+    }
+    *pte |= PTE_W; // Restaura el permiso de escritura en la página
+  }
+  return 0;
 }
