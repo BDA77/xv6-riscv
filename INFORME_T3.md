@@ -309,16 +309,10 @@ Luego de que todas las pruebas anduvieran bien se decidió realizar el push de l
       git push origin boreas_duchens_t3
       ```
 
-2. **Push final**:
 
-    - Finalmente se realizará el último push de la siguiente manera:
-      ```bash
-      git branch
-      git status
-      git add .
-      git commit -m "Se agregan conclusiones finales"
-      git push origin boreas_duchens_t3
-      ```
+### Push Final de la Tarea 3
+
+Finalmente, se realizará el push final con todo el informe terminado.
 
 
 ## Conclusiones Finales
