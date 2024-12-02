@@ -8,3 +8,8 @@ typedef unsigned int  uint32;
 typedef unsigned long uint64;
 
 typedef uint64 pde_t;
+
+typedef struct message{
+    int sender_pid;
+    char content[128];
+} message;

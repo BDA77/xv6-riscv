@@ -6,6 +6,12 @@
 #include "proc.h"
 #include "defs.h"
 
+struct message msg_queue[MSG_QUEUE_SIZE];
+int queue_start = 0;
+int queue_end = 0;
+
+struct spinlock queue_lock;
+
 struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
@@ -692,4 +698,12 @@ procdump(void)
     printf("%d %s %s", p->pid, state, p->name);
     printf("\n");
   }
+}
+
+void
+init_msg_queue()
+{
+  initlock(&queue_lock, "msg_queue_lock");
+  queue_start = 0;
+  queue_end = 0;
 }
