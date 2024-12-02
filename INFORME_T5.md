@@ -464,19 +464,8 @@ Finalmente, se realizará el push final con todo el informe terminado.
 
 ## Conclusiones Finales
 
+En conclusión, la implementación de un sistema de comunicación entre procesos (IPC) en el entorno de xv6, mediante una cola de mensajes, fue un proceso difícil y exitoso. El proceso comenzó con la creación de una nueva rama para la tarea y la modificación de varios archivos clave en el sistema, para definir y gestionar la cola de mensajes. La implementación incluyó la creación de dos nuevas llamadas al sistema, las cuales permiten a los procesos enviar y recibir mensajes a través de la cola. Todo esteo utilizando un spinlock para garantizar la sincronización.
 
+Durante el desarrollo, se realizaron pruebas con un archivo específico llamado `testipc.c`, que implementaba dos procesos: uno para enviar mensajes y otro para recibirlos. Sin embargo, surgieron varios desafíos técnicos, especialmente con conflictos en las declaraciones de las funciones de impresión `printf` y `fprintf`. Para resolver estos problemas se decidió modificar el archivo de pruebas, eliminando las dependencias de `<stdio.h>` y reimplementando funciones manuales capaces de realizar estas tareas. De esta forma no se usaron bibliotecas externas a xv6.
 
-
-
-
-
-
-
-
-En conclusión, la implementación de permisos básicos en xv6 fue un proceso desafiante y enriquecedor que permitió comprender en profundidad el manejo de archivos y la estructura del sistema operativo. El objetivo principal se logró exitosamente: modificar la gestión de archivos para incluir permisos específicos (lectura, escritura y un estado inmutable) que restringen las operaciones según las reglas definidas.
-
-Una de las principales dificultades fue identificar el lugar adecuado para implementar las verificaciones de permisos. Inicialmente, se consideró añadirlas en cada función asociada, pero esto habría resultado en una redundancia innecesaria y un código más complejo. Finalmente, se determinó que realizar las verificaciones dentro de la función `uint64 sys_open()` en el archivo `sysfile.c` simplificaba significativamente la lógica y mejoraba la eficiencia del sistema. Este cambio permitió centralizar el control de acceso, asegurando que todos los intentos de abrir un archivo pasaran por estas verificaciones.
-
-Otro desafío fue entender por qué esta implementación de llamada al sistema se realizó en `sysfile.c` en lugar de `sysproc.c`, como era esperado inicialmente. La razón se encuentra en que `sysfile.c` es el módulo responsable del manejo de archivos y, por tanto, es el lugar natural para gestionar las verificaciones relacionadas con los permisos de acceso a estos. Este aprendizaje refuerza la importancia de analizar la estructura y propósito de cada módulo antes de realizar modificaciones en un sistema operativo. En ese sentido, durante el desarrollo también se enfrentaron problemas de conocimiento técnico, como el límite de caracteres para nombres de archivos en xv6, lo cual generó un error inesperado al compilar. Esta dificultad fue superada de manera sencilla, pero no quita el hecho de que la rigurosidad en ese aspecto sea fundamental.
-
-Finalmente, este proyecto no solo permitió implementar nuevas funcionalidades, sino que también brindó valiosas lecciones sobre el diseño modular de sistemas operativos, el manejo de errores y la importancia de la documentación para guiar y justificar decisiones de diseño. En este caso particular, el haber llevado un registro detallado de cada paso en el informe fue crucial para identificar y resolver problemas de manera eficiente durante el desarrollo, facilitando así el proceso de implementación.
+Finalmente, el proyecto mostró que la implementación de un sistema IPC básico en xv6 es factible, pero también destacó algunos desafíos, como los problemas con la gestión de recursos compartidos y la compatibilidad de funciones estándar. En ese aspecto, el haber llevado un registro detallado de cada paso en el informe fue crucial para identificar y resolver problemas de manera eficiente durante el desarrollo, facilitando así el proceso de implementación.
